@@ -1848,10 +1848,17 @@ static void ideapad_acpi_notify(acpi_handle handle, u32 event, void *data)
 	struct ideapad_private *priv = data;
 	unsigned long vpc1, vpc2, bit;
 
-    if (priv->suspended)
-    		return;
-
 	scoped_guard(mutex, &priv->vpc_mutex) {
+		acpi_handle_info(handle, "event: %lu\n",
+			(unsigned long)event);
+
+		if(!data)
+			acpi_handle_info(handle, "no data");
+			return;
+
+		if (priv->suspended)
+			return;
+
 		if (read_ec_data(handle, VPCCMD_R_VPC1, &vpc1))
 			return;
 
@@ -2112,6 +2119,7 @@ static const struct wmi_device_id ideapad_wmi_ids[] = {
 	{ "56322276-8493-4CE8-A783-98C991274F5E", &ideapad_wmi_context_esc }, /* Yoga 700 */
 	{ "8FC0DE0C-B4E4-43FD-B0F3-8871711C1294", &ideapad_wmi_context_fn_keys }, /* Legion 5 */
 	{ "46f16367-fb9d-11ee-a4f6-40c2ba4a5625", &ideapad_wmi_context_esc }, /* ThinkBook 16+ 2024 IMH */
+	{ "057df30c-f47a-11ee-a4f6-40c2ba4545f8", &ideapad_wmi_context_esc }, /* ThinkBook 16+ 2024 AMD */
 	{},
 };
 MODULE_DEVICE_TABLE(wmi, ideapad_wmi_ids);
