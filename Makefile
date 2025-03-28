@@ -8,10 +8,22 @@ MODULE_DIR = $(MODULE_NAME)-$(MODULE_VERSION)
 
 BLACKLIST_MODULE_CONF = blacklist-ideapad-laptop.conf
 
+# Compiler options
+CC ?= gcc  # Default compiler is GCC
+CLANG := clang
+GCC := gcc
+
 obj-m := $(MODULE_NAME).o
 
 all:
 	make -C $(KERNEL_DIR)/build/ M=$(PWD) modules
+
+gcc:
+	make -C $(KERNEL_DIR)/build/ M=$(PWD) CC=$(GCC) modules
+
+clang:
+	make -C $(KERNEL_DIR)/build/ M=$(PWD) CC=$(CLANG) LLVM=1 -flto=thin	-O2 modules
+
 clean:
 	make -C $(KERNEL_DIR)/build/ M=$(PWD) clean
 
