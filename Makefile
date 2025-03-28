@@ -22,7 +22,7 @@ gcc:
 	make -C $(KERNEL_DIR)/build/ M=$(PWD) CC=$(GCC) modules
 
 clang:
-	make -C $(KERNEL_DIR)/build/ M=$(PWD) CC=$(CLANG) LLVM=1 -flto=thin	-O2 modules
+	make -C $(KERNEL_DIR)/build/ M=$(PWD) CC=$(CLANG) LLVM=1 modules
 
 clean:
 	make -C $(KERNEL_DIR)/build/ M=$(PWD) clean
