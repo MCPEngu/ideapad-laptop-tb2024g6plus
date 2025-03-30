@@ -4,15 +4,14 @@ This kernel module solves problem with laptop turning off after closing the lid.
 
 Tested and works on:
 
-- Thinkbook 2024 16+ IMH with Ubuntu 24.04 with kernel 6.9.3-060903-generic
-- Thinkbook 16 G6+ 2024 AHP with Fedora 41 and kernel 6.13.8-cachyos & 6.13.8-cachyos-lto
+- Thinkbook 16 G6+ 2024 AHP with Fedora 41 and kernel 6.14.0-cachyos & 6.14.0-cachyos-lto
 
 ## Build
 
 Clone the repo with amd-patch branch first:
 
 ```shell
-git clone -b amd-patch https://github.com/MCPEngu/ideapad-laptop-tb2024g6plus 
+git clone -b 6.14 https://github.com/MCPEngu/ideapad-laptop-tb2024g6plus 
 ```
 
 Then:
