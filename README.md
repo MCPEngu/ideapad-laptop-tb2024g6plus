@@ -1,3 +1,5 @@
+## ALREADY MERGED IN LATEST KERNEL
+
 # The IdeaPad ACPI Extras kernel modules for ThinkBook 2024 G6+
 
 This kernel module solves problem with laptop turning off after closing the lid.
